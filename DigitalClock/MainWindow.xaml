@@ -1,0 +1,75 @@
+﻿<Window x:Class="DigitalClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DigitalClock.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="400">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <!-- 時間の表示 -->
+            <Viewbox Grid.Column="1">
+                <TextBlock>
+                     <Run Text="{Binding Path=ClockViewModel.HourData}" />
+                     <Run Text=":" />
+                     <Run Text="{Binding Path=ClockViewModel.MinuteData}" />
+                     <Run Text="."/>
+                     <Run Text="{Binding Path=ClockViewModel.SecondData}" />
+                </TextBlock>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Column="1">
+                <TextBlock Text="{Binding Path=ClockViewModel.YearData}">年</TextBlock>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <!-- 日付の表示 -->
+            <Viewbox Grid.Column="1">
+                <TextBlock Text="{Binding Path=ClockViewModel.MonthData}"/>
+            </Viewbox>
+            <Viewbox Grid.Column="2">
+                <TextBlock Text="月"/>
+            </Viewbox>
+            <Viewbox Grid.Column="3">
+                <TextBlock Text="{Binding Path=ClockViewModel.DayData}"/>
+            </Viewbox>
+            <Viewbox Grid.Column="4">
+                <TextBlock Text="日"/>
+            </Viewbox>
+            <Viewbox Grid.Column="5">
+                <TextBlock Text="{Binding Path=ClockViewModel.DayNameData}"/>
+            </Viewbox>
+        </Grid>        
+    </Grid>
+</Window>
